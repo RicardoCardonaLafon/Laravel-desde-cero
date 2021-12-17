@@ -18,7 +18,7 @@ class Productos extends Controller
     }
     public function formCrearProducto()
     {
-        return 'Formulario para crear un producto desde el CONTROLADOR PRODUCTOS';
+        return view('productos.formCrearProducto');
     }
     public function mostrarProducto($producto)
     {
@@ -36,6 +36,18 @@ class Productos extends Controller
     public function formEditarProducto($producto)
     {
         return "Muestra Formulario para editar el Producto {$producto} desde el CONTROLADOR PRODUCTOS";
+    }
+    public function creaProducto()
+    {
+        // $producto= Product::create([
+        //     'titulo'=>request()->titulo,
+        //     'descripcion'=>request()->descripcion,
+        //     'precio'=>request()->precio,
+        //     'stock'=>request()->stock,
+        //     'estado'=>request()->estado,
+        // ]);
+        $producto=Product::create(request()->all());
+        return $producto;
     }
     public function editarProducto($producto)
     {
