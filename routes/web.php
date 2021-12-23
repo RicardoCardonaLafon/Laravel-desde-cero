@@ -23,8 +23,8 @@ Route::post('productos', 'Productos@creaProducto')->name('productos.creaProducto
 
 Route::get('productos/{producto}', 'Productos@mostrarProducto')->name('productos.mostrarProducto');
 
-Route::get('productos/{producto}/editar', 'Productos@formEditarProducto')->name('productos.formEditarProducto');
+Route::get('productos/{producto}/editarProducto', 'Productos@formEditarProducto')->name('productos.formEditarProducto');
 
-Route::match(['put','patch'],'productos/{producto}', 'Productos@editarProducto')->name('productos.editarProducto');
+Route::match(['put','patch'],'productos/{producto}', 'Productos@editar')->name('productos.editar');
 
 Route::delete('productos/{producto}', 'Productos@eliminarProducto')->name('productos.eliminarProducto');

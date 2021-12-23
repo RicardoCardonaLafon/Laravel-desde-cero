@@ -35,7 +35,9 @@ class Productos extends Controller
     }
     public function formEditarProducto($producto)
     {
-        return "Muestra Formulario para editar el Producto {$producto} desde el CONTROLADOR PRODUCTOS";
+        return view('productos.editarProducto')->with([
+            'producto'=>Product::findorFail($producto),
+        ]);
     }
     public function creaProducto()
     {
@@ -49,13 +51,24 @@ class Productos extends Controller
         $producto=Product::create(request()->all());
         return $producto;
     }
-    public function editarProducto($producto)
+    public function editar($product)
     {
-        //
+        //dd($producto);
+        $product=Product::findorFail($product);
+
+        $product->update(request()->all());
+        
+
+        return $product;
     }
-    public function eliminarProducto($producto)
+    public function eliminarProducto($product)
     {
         //
+        $product=Product::findorFail($product);
+
+        $product->delete();
+
+        return $product;
     }
 
 }
